@@ -1,10 +1,51 @@
-const readline = require("readline");
+#!/usr/bin/env node
+const fs = require("fs");
+const { program } = require("commander");
 
-const rl = readline.createInterface({
-  input: process.stdin,
-  output: process.stdout,
-});
+const pwd = process.cwd();
 
-rl.on("line", (line) => {
-  if (line === "config") console.log("config");
-});
+program.version("0.0.1");
+
+function generateTypedefHandler(value) {
+  const filename = value;
+
+  try {
+    const data = fs.readFileSync("./templates/typedef", "utf8");
+    fs.writeFile(`${pwd}/${filename}.js`, data, (err) => {
+      if (err) throw err;
+      console.log("File is created successfully.");
+    });
+  } catch (err) {
+    console.error(err);
+  }
+}
+
+function generateResolverHandler(value) {
+  const filename = value;
+
+  try {
+    const data = fs.readFileSync("./templates/resolver", "utf8");
+    fs.writeFile(`${pwd}/${filename}.js`, data, (err) => {
+      if (err) throw err;
+      console.log("File is created successfully.");
+    });
+  } catch (err) {
+    console.error(err);
+  }
+}
+
+program
+  .option(
+    "-typedef, --genType <filename>",
+    "generate typedef",
+    generateTypedefHandler
+  )
+  .option(
+    "-resolver, --genRes <filename>",
+    "generate typedef",
+    generateResolverHandler
+  );
+
+program.parse(process.argv);
+
+// writeFile function with filename, content and callback function

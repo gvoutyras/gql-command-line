@@ -1,0 +1,8 @@
+const gql = require("graphql-tag");
+
+const typedef = gql`
+  extend type Query {}
+  extend type Mutation {}
+`;
+
+module.exports = typedef;

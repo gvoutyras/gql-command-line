@@ -1,0 +1,14 @@
+const camelCase = require("camelcase");
+const tu = require("travelsoft-util");
+const objToCamel = require("object-keys-camelcase");
+
+const { sequelize } = require("@models");
+
+const getParams = require("@utils/getSpParameters");
+
+const methods = {
+  Query: {},
+  Mutation: {},
+};
+
+module.exports = methods;
