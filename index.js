@@ -13,7 +13,7 @@ function generateTypedefHandler(value) {
     const data = fs.readFileSync("./templates/typedef", "utf8");
     fs.writeFile(`${pwd}/${filename}.js`, data, (err) => {
       if (err) throw err;
-      console.log("File is created successfully.");
+      console.log("File was created successfully.");
     });
   } catch (err) {
     console.error(err);
@@ -27,7 +27,7 @@ function generateResolverHandler(value) {
     const data = fs.readFileSync("./templates/resolver", "utf8");
     fs.writeFile(`${pwd}/${filename}.js`, data, (err) => {
       if (err) throw err;
-      console.log("File is created successfully.");
+      console.log("File was created successfully.");
     });
   } catch (err) {
     console.error(err);
